@@ -27,8 +27,7 @@ namespace TrabalhoAspNet.Controllers
             {
                 return NotFound();
             }
-
-            // Fetch the compra
+            
             var compra = await _context.Compras
                 .FirstOrDefaultAsync(m => m.Id == id);
 
@@ -36,14 +35,12 @@ namespace TrabalhoAspNet.Controllers
             {
                 return NotFound();
             }
-
-            // Fetch all Carrinho items related to this compra
+            
             var carrinhoItens = await _context.Carrinhos
                 .Include(c => c.Livro)
                 .Where(c => c.CompraId == id)
                 .ToListAsync();
-
-            // Create a view model to pass both the compra and the associated Carrinho items
+            
             var viewModel = new ViewCarrinhoCompra
             {
                 Compra = compra,
@@ -60,8 +57,6 @@ namespace TrabalhoAspNet.Controllers
         }
 
         // POST: Compras/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,TotalItens,ValorTotal")] Compra compra)
@@ -92,8 +87,6 @@ namespace TrabalhoAspNet.Controllers
         }
 
         // POST: Compras/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,TotalItens,ValorTotal")] Compra compra)

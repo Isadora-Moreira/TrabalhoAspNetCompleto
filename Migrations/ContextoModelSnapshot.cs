@@ -284,6 +284,9 @@ namespace TrabalhoAspNet.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateOnly>("DataCompra")
+                        .HasColumnType("date");
+
                     b.Property<int>("TotalItens")
                         .HasColumnType("int");
 

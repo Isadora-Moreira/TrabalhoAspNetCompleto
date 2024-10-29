@@ -20,7 +20,7 @@ namespace TrabalhoASPNet.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal ValorTotal {  get; set; }
         
-        [Display(Name = "Data de nascimento")] 
+        [Display(Name = "Data da compra")] 
         [Required(ErrorMessage = "Campo obrigatório")]
         [DataType(DataType.Date)]
         public DateOnly DataCompra { get; set; } 
