@@ -129,11 +129,19 @@ namespace TrabalhoAspNet.Controllers
         }
 
         // POST: Generos/Delete/5
+        // verificar se existe em um livro
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var genero = await _context.Generos.FindAsync(id);
+            
+            var livro = await _context.Livros.FirstOrDefaultAsync(l => l.GeneroId == id);
+            if (livro != null)
+            {
+                ModelState.AddModelError("GeneroId", "Não é possivel excluir o genero, pois existe um livro associado.");
+            }
+            
             if (genero != null)
             {
                 _context.Generos.Remove(genero);
