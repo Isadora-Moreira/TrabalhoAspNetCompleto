@@ -16,21 +16,22 @@ namespace TrabalhoAspNet.Controllers
         }
 
         // GET: Carrinhos
-        // GET: Carrinhos
+        // Exibe a lista de itens no carrinho que ainda não foram comprados.
         [SuppressMessage("ReSharper.DPA", "DPA0000: DPA issues")]
         public async Task<IActionResult> Index()
         {
+            // Se a compra foi finalizada, retorna uma lista vazia.
             if (TempData["CarrinhoEsvaziado"] != null)
             {
-                // Return an empty cart to the view when a purchase is complete
-                return View(new List<Carrinho>()); // Ensure the view is empty after the purchase
+                
+                return View(new List<Carrinho>());
             }
 
-            // Load only cart items that have not been associated with a Compra yet (i.e., CompraId is null)
+            // Pega apenas os items que o CompraId é nulo, ou seja, não está associado a uma compra
             var contexto = _context.Carrinhos
                 .Include(c => c.Compra)
                 .Include(c => c.Livro)
-                .Where(c => c.CompraId == null); // Only show items not yet purchased
+                .Where(c => c.CompraId == null);
 
             return View(await contexto.ToListAsync());
         }
@@ -57,6 +58,8 @@ namespace TrabalhoAspNet.Controllers
         }
 
         // GET: Carrinhos/Create
+        //Exibe a view para cadastrar um carrinho.
+        // Popula listas para seleção de compra e livro.
         public IActionResult Create()
         {
             ViewData["CompraId"] = new SelectList(_context.Compras, "Id", "Id");
@@ -65,19 +68,20 @@ namespace TrabalhoAspNet.Controllers
         }
 
         // POST: Carrinhos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Valida e cadastra um carrinho.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,LivroId,Quantidade")] Carrinho carrinho)
         {
             var livroSelecionado = await _context.Livros.FindAsync(carrinho.LivroId);
-
+            
+            // verifica se o livro existe
             if (livroSelecionado == null)
             {
                 ModelState.AddModelError("LivroId", "Livro não encontrado.");
             }
 
+            //verifica se a quantidade está disponível em estoque
             if (livroSelecionado != null && carrinho.Quantidade > livroSelecionado.QuantidadeEmEstoque)
             {
                 ModelState.AddModelError("Quantidade", "Quantidade inserida excede o estoque disponível.");
@@ -85,16 +89,15 @@ namespace TrabalhoAspNet.Controllers
 
             if (ModelState.IsValid)
             {
-                // Se o carrinho for salvo, atualize o estoque
                 _context.Add(carrinho);
                 await _context.SaveChangesAsync();
-                await AtualizarEstoque(livroSelecionado, carrinho.Quantidade);
                 return RedirectToAction(nameof(Index));
             }
 
             ViewData["LivroId"] = new SelectList(await _context.Livros.ToListAsync(), "Id", "Titulo", carrinho.LivroId);
             return View(carrinho);
         }
+        
         private async Task AtualizarEstoque(Livro livro, int quantidade)
         {
             livro.QuantidadeEmEstoque -= quantidade;
@@ -104,11 +107,15 @@ namespace TrabalhoAspNet.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        // Finaliza a compra.
+        // Verifica o estoque, atualiza a quantidade disponível
+        // cria uma nova compra
+        // Se algum item não tiver estoque suficiente, retorna uma mensagem de erro.
         public async Task<IActionResult> SalvarCarrinho(int[] carrinhoIds)
         {
             var compra = new Compra { TotalItens = 0, ValorTotal = 0 };
 
-            // Process each cart item to create a purchase
+            
             foreach (var carrinhoId in carrinhoIds)
             {
                 var carrinho = await _context.Carrinhos.Include(c => c.Livro).FirstOrDefaultAsync(c => c.Id == carrinhoId);
@@ -126,18 +133,19 @@ namespace TrabalhoAspNet.Controllers
                     compra.ValorTotal += carrinho.Quantidade * carrinho.Livro.Preco;
                 }
             }
-
+            compra.DataCompra =  DateOnly.FromDateTime(DateTime.Now);
             _context.Compras.Add(compra);
             await _context.SaveChangesAsync();
 
-            // Update each cart item with the new CompraId
+            
+            // associa a compra aos carrinhos
             foreach (var carrinhoId in carrinhoIds)
             {
                 var carrinho = await _context.Carrinhos.FirstOrDefaultAsync(c => c.Id == carrinhoId);
                 if (carrinho != null)
                 {
-                    carrinho.CompraId = compra.Id;  // Associate the cart item with the new purchase
-                    _context.Carrinhos.Update(carrinho); // Update the cart item in the database
+                    carrinho.CompraId = compra.Id;
+                    _context.Carrinhos.Update(carrinho);
                 }
             }
 
@@ -169,8 +177,6 @@ namespace TrabalhoAspNet.Controllers
         }
 
         // POST: Carrinhos/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,LivroId,Quantidade,CompraId")] Carrinho carrinho)
@@ -178,6 +184,13 @@ namespace TrabalhoAspNet.Controllers
             if (id != carrinho.Id)
             {
                 return NotFound();
+            }
+            
+            var livroSelecionado = await _context.Livros.FindAsync(carrinho.LivroId);
+            //verifica se a quantidade está disponível em estoque
+            if (livroSelecionado != null && carrinho.Quantidade > livroSelecionado.QuantidadeEmEstoque)
+            {
+                ModelState.AddModelError("Quantidade", "Quantidade inserida excede o estoque disponível.");
             }
 
             if (ModelState.IsValid)
