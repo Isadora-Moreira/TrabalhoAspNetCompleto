@@ -19,5 +19,10 @@ namespace TrabalhoASPNet.Models
         [Required(ErrorMessage ="Campo é obrigatório")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal ValorTotal {  get; set; }
+        
+        [Display(Name = "Data de nascimento")] 
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [DataType(DataType.Date)]
+        public DateOnly DataCompra { get; set; } 
     }
 }
