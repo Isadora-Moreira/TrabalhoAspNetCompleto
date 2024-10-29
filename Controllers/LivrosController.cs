@@ -149,11 +149,19 @@ namespace TrabalhoAspNet.Controllers
         }
 
         // POST: Livros/Delete/5
+        // verificar se existe em uma compra
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var livro = await _context.Livros.FindAsync(id);
+            
+            var carrinho = await _context.Carrinhos.FirstOrDefaultAsync(c => c.LivroId == id);
+            if (carrinho != null)
+            {
+                ModelState.AddModelError("LivroId", "Não é possivel excluir o livro, pois existe uma compra associada.");
+            }
+            
             if (livro != null)
             {
                 _context.Livros.Remove(livro);
