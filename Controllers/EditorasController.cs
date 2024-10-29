@@ -129,11 +129,20 @@ namespace TrabalhoAspNet.Controllers
         }
 
         // POST: Editoras/Delete/5
+        
+        // verificar se existe em um livro
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var editora = await _context.Editoras.FindAsync(id);
+            
+            var livro = await _context.Livros.FirstOrDefaultAsync(l => l.EditoraId == id);
+            if (livro != null)
+            {
+                ModelState.AddModelError("EditoraId", "Não é possivel excluir a editora, pois existe um livro associado.");
+            }
+            
             if (editora != null)
             {
                 _context.Editoras.Remove(editora);
