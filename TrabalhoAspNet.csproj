@@ -9,6 +9,9 @@
 
     <ItemGroup>
         <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true"/>
+        <None Remove="Models\Dados\**" />
+        <None Remove="Models\Consultas\**" />
+        <None Remove="Pages\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -23,6 +26,33 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8"/>
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Models\Dados\**" />
+      <Compile Remove="Models\Consultas\**" />
+      <Compile Remove="Pages\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Models\Dados\**" />
+      <EmbeddedResource Remove="Models\Consultas\**" />
+      <EmbeddedResource Remove="Pages\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Models\Dados\**" />
+      <Content Remove="Models\Consultas\**" />
+      <Content Remove="Pages\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Pages\Dados\Livros.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Dados\Autores.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Views\Consultas\" />
     </ItemGroup>
 
 </Project>

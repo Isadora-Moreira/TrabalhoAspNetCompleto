@@ -90,6 +90,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/isamm/Documents/Rider/TrabalhoAspNet/Views/Dados/Autores.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NcQXV0b3Jlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/isamm/Documents/Rider/TrabalhoAspNet/Views/Dados/Editoras.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NcRWRpdG9yYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/isamm/Documents/Rider/TrabalhoAspNet/Views/Dados/Generos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NcR2VuZXJvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/isamm/Documents/Rider/TrabalhoAspNet/Views/Dados/Livros.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NcTGl2cm9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/isamm/Documents/Rider/TrabalhoAspNet/Views/Editoras/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRpdG9yYXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
