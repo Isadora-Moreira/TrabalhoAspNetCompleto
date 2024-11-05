@@ -160,6 +160,7 @@ namespace TrabalhoAspNet.Controllers
             if (carrinho != null)
             {
                 ModelState.AddModelError("LivroId", "Não é possivel excluir o livro, pois existe uma compra associada.");
+                return View(livro);
             }
             
             if (livro != null)

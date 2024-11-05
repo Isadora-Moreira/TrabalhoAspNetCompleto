@@ -141,6 +141,7 @@ namespace TrabalhoAspNet.Controllers
             if (livro != null)
             {
                 ModelState.AddModelError("EditoraId", "Não é possivel excluir a editora, pois existe um livro associado.");
+                return View(editora);
             }
             
             if (editora != null)

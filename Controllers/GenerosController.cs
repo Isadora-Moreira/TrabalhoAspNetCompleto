@@ -140,6 +140,7 @@ namespace TrabalhoAspNet.Controllers
             if (livro != null)
             {
                 ModelState.AddModelError("GeneroId", "Não é possivel excluir o genero, pois existe um livro associado.");
+                return View(genero);
             }
             
             if (genero != null)
