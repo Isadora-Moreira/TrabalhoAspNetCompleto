@@ -226,9 +226,9 @@ public class DadosController : Controller
             Livro livro = new Livro();
 
             livro.Titulo = titulos[rand.Next(0, titulos.Length)];
-            livro.AutorId = rand.Next(1, 101);
-            livro.GeneroId = rand.Next(1, 31);
-            livro.EditoraId = rand.Next(1, 26);
+            livro.AutorId = rand.Next(0, 100);
+            livro.GeneroId = rand.Next(0, 30);
+            livro.EditoraId = rand.Next(0, 25);
             livro.AnoPublicacao = rand.Next(1980, 2021).ToString();
             livro.Preco = Math.Round(50 + (decimal)rand.NextDouble() * (300 - 10), 2);
             livro.QuantidadeEmEstoque = rand.Next(50, 501);
