@@ -90,6 +90,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/isamm/Documents/Rider/TrabalhoAspNet/Views/Consultas/FiltrarAutor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VsdGFzXEZpbHRyYXJBdXRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/isamm/Documents/Rider/TrabalhoAspNet/Views/Consultas/FiltrarLivro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VsdGFzXEZpbHRyYXJMaXZyby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/isamm/Documents/Rider/TrabalhoAspNet/Views/Consultas/ResultadoFiltrarAutor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VsdGFzXFJlc3VsdGFkb0ZpbHRyYXJBdXRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/isamm/Documents/Rider/TrabalhoAspNet/Views/Consultas/ResultadoFiltrarLivro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VsdGFzXFJlc3VsdGFkb0ZpbHRyYXJMaXZyby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/isamm/Documents/Rider/TrabalhoAspNet/Views/Dados/Autores.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFkb3NcQXV0b3Jlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

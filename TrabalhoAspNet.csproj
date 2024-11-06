@@ -51,8 +51,4 @@
       <_ContentIncludedByDefault Remove="Pages\Dados\Autores.cshtml" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Views\Consultas\" />
-    </ItemGroup>
-
 </Project>

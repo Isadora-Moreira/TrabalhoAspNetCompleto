@@ -229,7 +229,7 @@ public class DadosController : Controller
             livro.AutorId = rand.Next(0, 100);
             livro.GeneroId = rand.Next(0, 30);
             livro.EditoraId = rand.Next(0, 25);
-            livro.AnoPublicacao = rand.Next(1980, 2021).ToString();
+            livro.AnoPublicacao = rand.Next(1980, 2021);
             livro.Preco = Math.Round(50 + (decimal)rand.NextDouble() * (300 - 10), 2);
             livro.QuantidadeEmEstoque = rand.Next(50, 501);
             

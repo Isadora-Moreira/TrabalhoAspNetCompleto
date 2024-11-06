@@ -352,10 +352,8 @@ namespace TrabalhoAspNet.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AnoPublicacao")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int>("AnoPublicacao")
+                        .HasColumnType("int");
 
                     b.Property<int>("AutorId")
                         .HasColumnType("int");

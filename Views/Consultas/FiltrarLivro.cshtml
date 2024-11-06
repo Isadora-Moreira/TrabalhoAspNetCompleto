@@ -1,0 +1,82 @@
+﻿
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Filtrar Livros</h1>
+
+<hr/>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ResultadoFiltrarLivro">
+            <div class="form-group">
+                <label class="control-label">Informe o título</label>
+                <input name="Titulo" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Informe o nome do autor</label>
+                <input name="Autor" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Informe o nome da editora</label>
+                <input name="Editora" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Informe o gênero</label>
+                <input name="Genero" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Filtrar por ano de publicação</label>
+            </div>
+            <br/>
+            <div class="form-group">
+                <label class="control-label">Ano inicial</label>
+                <input type="number" name="anoInicial" class="form-control" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label class="control-label">Ano final</label>
+                <input type="number" name="anoFinal" class="form-control" />
+            </div>
+            <br/>
+            <div class="form-group">
+                <label class="control-label">Filtrar por preço</label>
+            </div>
+            <br/>
+            <div class="form-group">
+                <label class="control-label">Preço inicial</label>
+                <input type="number" name="precoInicial" class="form-control" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label class="control-label">Preço final</label>
+                <input type="number" name="precoFinal" class="form-control" />
+            </div>
+            <br/>
+            <div class="form-group">
+                <label class="control-label">Filtrar por estoque</label>
+            </div>
+            <br/>
+            <div class="form-group">
+                <label class="control-label">Estoque inicial</label>
+                <input type="number" name="estoqueInicial" class="form-control" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label class="control-label">Estoque final</label>
+                <input type="number" name="estoqueFinal" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Filtrar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts 
+{
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
