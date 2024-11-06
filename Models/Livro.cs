@@ -18,8 +18,7 @@ namespace TrabalhoASPNet.Models
 
         [Display(Name ="Ano de publicação: ")]
         [Required(ErrorMessage ="Campo é obrigatório")]
-        [StringLength(4, ErrorMessage ="Máximo de 4 caracteres")]
-        public string AnoPublicacao { get; set; }
+        public int AnoPublicacao { get; set; }
 
         [Display(Name ="Preço: ")]
         [Required(ErrorMessage ="Campo é obrigatório")]
