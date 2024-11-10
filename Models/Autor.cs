@@ -11,7 +11,7 @@ namespace TrabalhoASPNet.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Display(Name = "Nome: ")]
+        [Display(Name = "Autor")]
         [Required(ErrorMessage = "Campo é obrigatório")]
         [StringLength(50, ErrorMessage = "Tamanho máximo de 50 caracteres")]
         public string Nome { get; set; }
@@ -21,7 +21,7 @@ namespace TrabalhoASPNet.Models
         [DataType(DataType.Date)]
         public DateOnly Nascimento { get; set; }
        
-        [Display(Name ="Nacionalidade: ")]
+        [Display(Name ="Nacionalidade")]
         [Required(ErrorMessage ="Campo é obrigatório")]
         [StringLength(50, ErrorMessage = "Máximo 50 caracteres")]
         public string Nacionalidade { get; set; }
