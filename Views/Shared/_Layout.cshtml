@@ -10,35 +10,46 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
+        <div class="container">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            <li class="nav-item dropdown list-unstyled">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="False">Dados</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Autores" asp-action="Index">Autores</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Autores" asp-action="Index">Autores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Editoras" asp-action="Index">Editoras</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Editoras" asp-action="Index">Editoras</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Generos" asp-action="Index">Gêneros</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Generos" asp-action="Index">Gêneros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Livros" asp-action="Index">Livros</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Livros" asp-action="Index">Livros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Compras" asp-action="Index">Compras</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Carrinhos" asp-action="Index">Carrinhos</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Compras" asp-action="Index">Histórico de Compras</a>
                     </li>
                 </ul>
-                <partial name="_LoginPartial"/>
-            </div>
+            </li>
+            <li class="nav-item dropdown list-unstyled">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="False">Filtrar dados</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li class="nav-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="Consultas" asp-action="FiltrarAutor">Autores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="dropdown-item" asp-area="" asp-controller="Consultas" asp-action="FiltrarLivro">Livros</a>
+                    </li>
+                </ul>
+            </li>
+            <a class="nav-link" asp-area="" asp-controller="Carrinhos" asp-action="Index">Comprar</a>
+        </div>
+        <div class="partial-login">
+            <partial name="_LoginPartial"/>
         </div>
     </nav>
 </header>
@@ -48,14 +59,11 @@
     </main>
 </div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2024 - TrabalhoAspNet - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
-</footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

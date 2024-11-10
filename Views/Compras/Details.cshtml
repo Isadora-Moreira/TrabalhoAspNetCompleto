@@ -6,52 +6,58 @@ ViewData["Title"] = "Details";
 Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Detalhes da Compra</h3>
+<h2 class="dt-purchase-title">Detalhes da Compra</h2>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>ID da compra</th>    
-        <th>Total de itens</th>
-        <th>Valor total</th>
-        <th>Data da compra</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>@Model.Compra.Id</td>
-        <td>@Model.Compra.TotalItens</td>
-        <td>@Model.Compra.ValorTotal.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
-        <td>@Model.Compra.DataCompra</td>
-    </tr>
-    </tbody>
-</table>
+<div class="dt-purchase-container">
+    <table>
+        <thead>
+        <tr>
+            <th>ID da compra</th>    
+            <th>Total de itens</th>
+            <th>Valor total</th>
+            <th>Data da compra</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>@Model.Compra.Id</td>
+            <td>@Model.Compra.TotalItens</td>
+            <td>@Model.Compra.ValorTotal.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
+            <td>@Model.Compra.DataCompra</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
-<h3>Itens da Compra</h3>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>Título do Livro</th>
-        <th>Preço Unitário</th>
-        <th>Quantidade</th>
-        <th>Subtotal</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model.CarrinhoItens)
-    {
-    var subtotal = item.Livro.Preco * item.Quantidade; // Calculate the subtotal
-    <tr>
-        <td>@item.Livro.Titulo</td>
-        <td>@item.Livro.Preco.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
-        <td>@item.Quantidade</td>
-        <td>@subtotal.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
-    </tr>
-    }
-    </tbody>
-</table>
+<h2 class="dt-purchase-subtitle">Itens da Compra</h2>
 
-<div>
+<div class="dt-purchase-container">
+    <table>
+        <thead>
+        <tr>
+            <th>Título do Livro</th>
+            <th>Preço Unitário</th>
+            <th>Quantidade</th>
+            <th>Subtotal</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.CarrinhoItens)
+        {
+            var subtotal = item.Livro.Preco * item.Quantidade; // Calculate the subtotal
+            <tr>
+                <td>@item.Livro.Titulo</td>
+                <td>@item.Livro.Preco.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
+                <td>@item.Quantidade</td>
+                <td>@subtotal.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+
+<div class="dt-return-link">
     <a asp-action="Index">Voltar à lista</a>
 </div>

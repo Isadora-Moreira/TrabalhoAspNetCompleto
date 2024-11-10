@@ -5,44 +5,53 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Resultado - Autores</h2>
+<h2 class="title-filter">Resultado - Autores</h2>
 
 <p>
-    <a asp-action="FiltrarAutor">Filtrar</a>
+    <button class="add-new-filter"><a class="add-new" asp-action="FiltrarAutor">Filtrar</a></button>
 </p>
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nascimento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nacionalidade)
-        </th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @item.Nascimento.ToString("dd/MM/yyyy")
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nacionalidade)
-        </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
-        </td>
-    </tr>
-    }
-    </tbody>
-</table>
+
+<div class="table-filter">
+    <table>
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nacionalidade)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @item.Nascimento.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nacionalidade)
+                </td>
+                <td>
+                    <a class="action-form" asp-action="Edit" asp-route-id="@item.Id"><ion-icon name="create"></ion-icon></a> 
+                    <a class="action-form" asp-action="Details" asp-route-id="@item.Id"><ion-icon name="search"></ion-icon></a> 
+                    <a class="action-form" asp-action="Delete" asp-route-id="@item.Id"><ion-icon name="trash"></ion-icon></a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts
+{
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+}

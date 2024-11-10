@@ -1,21 +1,25 @@
 @model IEnumerable<TrabalhoASPNet.Models.Carrinho>
 
-<h1>Carrinho de Compras</h1>
+<h2 class="cart-title">Carrinho de Compras</h2>
 
 @{
-    decimal total = 0;
-    Layout = "~/Views/Shared/_Layout.cshtml";
+decimal total = 0;
+Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @if (!Model.Any())
 {
-    <div class="alert alert-info">
-        Seu carrinho está vazio.
-    </div>
+<div class="footer-empty">
+    Seu carrinho está vazio.
+    <p>
+        <button class="add-empty"><a asp-controller="Carrinhos" asp-action="Create" class="add-book-empty">Adicionar Livro</a></button>
+    </p>
+</div>
 }
 else
-{
-    <table class="table">
+{ 
+<div class="table-container-cart">
+    <table>
         <thead>
         <tr>
             <th>@Html.DisplayNameFor(model => model.Livro.Titulo)</th>
@@ -36,28 +40,35 @@ else
                 <td>@Html.DisplayFor(modelItem => item.Livro.Preco)</td>
                 <td>@((item.Livro.Preco * item.Quantidade).ToString("C", new System.Globalization.CultureInfo("pt-BR"))) </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                    <a class="action-form" asp-action="Edit" asp-route-id="@item.Id"><ion-icon name="create"></ion-icon></a>
+                    <a class="action-form" asp-action="Details" asp-route-id="@item.Id"><ion-icon name="search"></ion-icon></a>
+                    <a class="action-form" asp-action="Delete" asp-route-id="@item.Id"><ion-icon name="trash"></ion-icon></a>
                 </td>
             </tr>
         }
         </tbody>
     </table>
+</div>
 
-    <h3>Total: @total.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</h3>
+<div class="footer mt-4">
+    <p>
+        <button class="add-book-btn"><a asp-controller="Carrinhos" asp-action="Create" class="add-book">Adicionar Livro</a></button>
+    </p>
+    
+    <h3 class="cart-total">Total: @total.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</h3>
 
     <form asp-action="SalvarCarrinho" method="post">
         @foreach (var item in Model)
         {
-            <input type="hidden" name="carrinhoIds" value="@item.Id" />
+            <input type="hidden" name="carrinhoIds" value="@item.Id"/>
         }
-        <button type="submit" class="btn btn-primary">Finalizar Compra</button>
+        <button type="submit" class="btn-cart-send">Finalizar Compra</button>
     </form>
+</div>
 }
 
-<p>
-    <a asp-controller="Carrinhos" asp-action="Create" class="btn btn-success">Adicionar Novo Livro</a>
-</p>
-
-
+@section Scripts
+{
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+}

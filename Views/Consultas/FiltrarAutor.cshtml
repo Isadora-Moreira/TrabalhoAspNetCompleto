@@ -3,37 +3,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Filtrar autor</h2>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="wrapper">
+    <div class="form-box">
+        <h2>Filtrar autor</h2>
         <form asp-action="ResultadoFiltrarAutor">
-            <div class="form-group">
-                <label class="control-label">Informe o nome</label>
-                <input type="text" name="Nome" class="form-control" />
+            <div class="input-box">
+                <label class="label-form">Informe o nome</label>
+                <input type="text" name="Nome" class="input"/>
             </div>
-            <br />
-            <div class="form-group">
-                <label class="control-label">Filtrar por aniversário</label>
+            <div class="input-box">
+                <label class="label-form">Data Inicial de Aniversário</label>
+                <input type="date" name="dataInicial" class="input"/>
             </div>
-            <br/>
-            <div class="form-group">
-                <label class="control-label">Data Inicial</label>
-                <input type="date" name="dataInicial" class="form-control" />
+            <div class="input-box">
+                <label class="label-form">Data Final de Aniversário</label>
+                <input type="date" name="dataFinal" class="input"/>
             </div>
-            <br />
-            <div class="form-group">
-                <label class="control-label">Data Final</label>
-                <input type="date" name="dataFinal" class="form-control" />
+            <div class="input-box">
+                <label class="label-form">Informe a nacionalidade</label>
+                <input type="text" name="Nacionalidade" class="input"/>
             </div>
-            <br />
-            <div class="form-group">
-                <label class="control-label">Informe a nacionalidade</label>
-                <input  type="text" name="Nacionalidade" class="form-control " />
-            </div>
-            <br />
-            <div class="form-group">
-                <input type="submit" value="Filtrar" class="btn btn-primary" />
+            <div>
+                <input type="submit" value="Filtrar" class="btn-login"/>
             </div>
         </form>
     </div>

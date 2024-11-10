@@ -5,27 +5,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Adicionar ao carrinho</h1>
+<div class="wrapper">
+    <div class="form-box">
+        <form asp-action="Create" method="post">
+            <h2 class="details-title">Adicionar ao carrinho</h2>
+            <div class="input-box">
+                <label asp-for="LivroId" class="label-form"></label>
+                @Html.DropDownListFor(model => model.LivroId, (SelectList)ViewData["LivroId"], "Selecione um título", new { @class = "input-dropdown" })
+                <span asp-validation-for="LivroId" class="text-danger"></span>
+            </div>
 
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label asp-for="LivroId" class="control-label"></label>
-        @Html.DropDownListFor(model => model.LivroId, (SelectList)ViewData["LivroId"], "Selecione um título", new { @class = "form-control" })
-        <span asp-validation-for="LivroId" class="text-danger"></span>
+            <div class="input-box">
+                <label asp-for="Quantidade" class="label-form"></label>
+                <input asp-for="Quantidade" type="text" class="input"/>
+                <span asp-validation-for="Quantidade" class="text-danger"></span>
+            </div>
+
+            <div>
+                <button type="submit" class="btn-login">Adicionar ao Carrinho</button>
+            </div>
+        </form>
     </div>
+</div>
 
-    <div class="form-group">
-        <label asp-for="Quantidade" class="control-label"></label>
-        <input asp-for="Quantidade" class="form-control" />
-        <span asp-validation-for="Quantidade" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button>
-    </div>
-</form>
-
-<div>
+<div class="return-link">
     <a asp-action="Index">Voltar à lista</a>
 </div>
 

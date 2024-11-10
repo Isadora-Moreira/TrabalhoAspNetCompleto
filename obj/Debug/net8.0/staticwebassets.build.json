@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "r/BhMpPvDzNewzrQchZewumlblyl5L+Lpj44s8e1TWY=",
+  "Hash": "tyQtKITGeK6FKRxQpBErb0Q34Z9bQt8rP6NxhPervpo=",
   "Source": "TrabalhoAspNet",
   "BasePath": "_content/TrabalhoAspNet",
   "Mode": "Default",
@@ -1193,6 +1193,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\isamm\\Documents\\Rider\\TrabalhoAspNet\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TrabalhoAspNet.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\isamm\\Documents\\Rider\\TrabalhoAspNet\\wwwroot\\css\\background3.jpg",
+      "SourceId": "TrabalhoAspNet",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\isamm\\Documents\\Rider\\TrabalhoAspNet\\wwwroot\\",
+      "BasePath": "_content/TrabalhoAspNet",
+      "RelativePath": "css/background3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\background3.jpg"
     },
     {
       "Identity": "C:\\Users\\isamm\\Documents\\Rider\\TrabalhoAspNet\\wwwroot\\css\\site.css",

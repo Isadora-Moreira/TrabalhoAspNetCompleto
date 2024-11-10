@@ -12,6 +12,7 @@
         <None Remove="Models\Dados\**" />
         <None Remove="Models\Consultas\**" />
         <None Remove="Pages\**" />
+        <None Remove="Views\Imagens\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -32,18 +33,32 @@
       <Compile Remove="Models\Dados\**" />
       <Compile Remove="Models\Consultas\**" />
       <Compile Remove="Pages\**" />
+      <Compile Remove="Views\Imagens\**" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Remove="Models\Dados\**" />
       <EmbeddedResource Remove="Models\Consultas\**" />
       <EmbeddedResource Remove="Pages\**" />
+      <EmbeddedResource Remove="Views\Imagens\**" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Remove="Models\Dados\**" />
       <Content Remove="Models\Consultas\**" />
       <Content Remove="Pages\**" />
+      <Content Remove="Views\Imagens\**" />
+      <Content Remove="wwwroot\css\background4.png" />
+      <Content Remove="wwwroot\css\background5.png" />
+      <Content Remove="wwwroot\css\background6.png" />
+      <Content Remove="wwwroot\css\background7.png" />
+      <Content Remove="wwwroot\css\background8.png" />
+      <Content Remove="wwwroot\css\background9.png" />
+      <Content Remove="wwwroot\css\background10.png" />
+      <Content Remove="wwwroot\css\background.png" />
+      <Content Remove="wwwroot\css\background0.png" />
+      <Content Remove="wwwroot\css\background1.png" />
+      <Content Remove="wwwroot\css\background2.png" />
     </ItemGroup>
 
     <ItemGroup>

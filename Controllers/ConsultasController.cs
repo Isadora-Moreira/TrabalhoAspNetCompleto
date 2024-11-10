@@ -74,59 +74,59 @@ public class ConsultasController : Controller
         if (id.HasValue)
         {
             listaLivros = contexto.Livros
-                .Where(a => a.Id == id)
+                .Where(l => l.Id == id)
                 .ToList();
         }
         else if (!string.IsNullOrEmpty(titulo))
         {
             listaLivros = contexto.Livros
-            .Where(a => a.Titulo.Contains(titulo))
-            .OrderBy (a => a.Titulo)
+            .Where(l => l.Titulo.Contains(titulo))
+            .OrderBy (l => l.Titulo)
             .ToList();
         }
         else if (anoInicial != null && anoFinal != null)
         {
             listaLivros = contexto.Livros
-                .Where(a => a.AnoPublicacao >= anoInicial && a.AnoPublicacao <= anoFinal)
-                .OrderBy(a => a.AnoPublicacao)
+                .Where(l => l.AnoPublicacao >= anoInicial && l.AnoPublicacao <= anoFinal)
+                .OrderBy(l => l.AnoPublicacao)
                 .ToList();
         }
         else if (!string.IsNullOrEmpty(nomeAutor))
         {
             listaLivros = contexto.Livros
-                .Include(l => l.Autor.Nome)
-                .Where(n => n.Autor.Nome.Contains(nomeAutor))
-                .OrderBy(a => a.Autor.Nome)
+                .Include(l => l.Autor)
+                .Where(l => l.Autor.Nome.Contains(nomeAutor))
+                .OrderBy(l => l.Autor.Nome)
                 .ToList();
         }
         else if (!string.IsNullOrEmpty(editora))
         {
             listaLivros = contexto.Livros
-                .Include(l => l.Editora.Nome)
-                .Where(n => n.Editora.Nome.Contains(editora))
-                .OrderBy(a => a.Editora.Nome)
+                .Include(l => l.Editora)
+                .Where(l => l.Editora.Nome.Contains(editora))
+                .OrderBy(l => l.Editora.Nome)
                 .ToList();
         }
         else if (!string.IsNullOrEmpty(genero))
         {
             listaLivros = contexto.Livros
-                .Include(l => l.Genero.Descricao)
-                .Where(n => n.Genero.Descricao.Contains(genero))
-                .OrderBy(a => a.Genero.Descricao)
+                .Include(l => l.Genero)
+                .Where(l => l.Genero.Descricao.Contains(genero))
+                .OrderBy(l => l.Genero.Descricao)
                 .ToList();
         }
         else if (precoInicial.HasValue && precoFinal.HasValue)
         {
             listaLivros = contexto.Livros
-                .Where(p => p.Preco >= precoInicial && p.Preco <= precoFinal)
-                .OrderBy(p => p.Preco)
+                .Where(l => l.Preco >= precoInicial && l.Preco <= precoFinal)
+                .OrderBy(l => l.Preco)
                 .ToList();
         }
         else if (estoqueInicial.HasValue && estoqueFinal.HasValue)
         {
             listaLivros = contexto.Livros
-                .Where(e => e.QuantidadeEmEstoque >= estoqueInicial && e.QuantidadeEmEstoque <= estoqueFinal)
-                .OrderBy(e => e.QuantidadeEmEstoque)
+                .Where(l => l.QuantidadeEmEstoque >= estoqueInicial && l.QuantidadeEmEstoque <= estoqueFinal)
+                .OrderBy(l => l.QuantidadeEmEstoque)
                 .ToList();
         }
         else
