@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,8 @@ namespace TrabalhoAspNet.Controllers
         }
 
         // GET: Livros
+        
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Index()
         {
             var contexto = _context.Livros.Include(l => l.Autor).Include(l => l.Editora).Include(l => l.Genero);

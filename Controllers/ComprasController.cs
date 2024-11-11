@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TrabalhoAspNet.Models;
@@ -13,7 +14,7 @@ namespace TrabalhoAspNet.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Roles = "Administrador")]
         // GET: Compras
         public async Task<IActionResult> Index()
         {

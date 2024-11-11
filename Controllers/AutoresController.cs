@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TrabalhoASPNet.Models;
@@ -16,6 +17,7 @@ namespace TrabalhoAspNet.Controllers
 
         // GET: Autores
         //Retorna uma lista de todos os autores e exibe na view correspondente
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Autores.ToListAsync());

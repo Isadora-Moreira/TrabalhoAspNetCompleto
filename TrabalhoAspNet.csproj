@@ -59,6 +59,7 @@
       <Content Remove="wwwroot\css\background0.png" />
       <Content Remove="wwwroot\css\background1.png" />
       <Content Remove="wwwroot\css\background2.png" />
+      <Content Remove="Views\Consultas\AgruparLivroAnoAutor.cshtml" />
     </ItemGroup>
 
     <ItemGroup>

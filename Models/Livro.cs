@@ -13,7 +13,7 @@ namespace TrabalhoASPNet.Models
 
         [Display(Name ="Título")]
         [Required(ErrorMessage ="Campo é obrigatório")]
-        [StringLength(50, ErrorMessage ="Máximo de 50 caracteres")]
+        [StringLength(200, ErrorMessage ="Máximo de 200 caracteres")]
         public string Titulo { get; set; }
 
         [Display(Name ="Publicação")]

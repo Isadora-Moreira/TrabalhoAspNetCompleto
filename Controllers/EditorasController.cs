@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TrabalhoASPNet.Models;
@@ -12,7 +13,7 @@ namespace TrabalhoAspNet.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Roles = "Administrador")]
         // GET: Editoras
         public async Task<IActionResult> Index()
         {

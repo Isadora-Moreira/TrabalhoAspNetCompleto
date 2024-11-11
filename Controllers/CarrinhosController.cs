@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +15,7 @@ namespace TrabalhoAspNet.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Roles = "Administrador")]
         // GET: Carrinhos
         // Exibe a lista de itens no carrinho que ainda não foram comprados.
         [SuppressMessage("ReSharper.DPA", "DPA0000: DPA issues")]
