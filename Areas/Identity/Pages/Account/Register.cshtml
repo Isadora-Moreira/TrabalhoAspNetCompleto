@@ -8,7 +8,6 @@
     <div class="form-box login">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <h2>Registrar</h2>
-            <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="input-box">
                 <input asp-for="Input.Email" class="input" autocomplete="username" aria-required="true" placeholder="email@exemplo.com" />

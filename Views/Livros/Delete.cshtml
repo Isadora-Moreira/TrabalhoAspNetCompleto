@@ -5,58 +5,88 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="details-title">Tem certeza que deseja deletar?</h2>
-
-<div>
-    <hr />
+<div class="delete-container-livro">
+    <h2 class="details-title">Tem certeza que deseja deletar?</h2>
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Titulo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Titulo)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.AnoPublicacao)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.AnoPublicacao)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Preco)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Preco)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.QuantidadeEmEstoque)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.QuantidadeEmEstoque)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Autor)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Autor.Nome)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Genero)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Genero.Descricao)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Editora)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Editora.Nome)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Voltar à lista</a>
-    </form>
+
+    <div class="d-flex justify-content-center align-items-center">
+        <form asp-action="Delete" class="d-flex justify-content-center align-items-center me-3">
+            <input type="hidden" asp-for="Id"/>
+            <input type="submit" value="Delete" class="btn btn-danger"/>
+        </form>
+        <a asp-action="Index" class="return-button">Voltar à lista</a>
+    </div>
 </div>
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="errorModalLabel">Erro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Não é possível excluir o livro pois existe uma compra associada.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        @* Razor checks if there's an error and only includes this script if true *@
+        @if (ViewData.ModelState.ContainsKey("LivroId") && ViewData.ModelState["LivroId"].Errors.Count > 0)
+        {
+        <text>
+        new bootstrap.Modal(document.getElementById('errorModal')).show();
+        </text>
+        }
+    });
+</script>
+}

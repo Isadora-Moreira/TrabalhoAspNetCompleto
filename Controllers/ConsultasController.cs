@@ -66,8 +66,8 @@ public class ConsultasController : Controller
         return View();
     }
 
-    public IActionResult ResultadoFiltrarLivro(int? id, string titulo, int? anoInicial, int? anoFinal, string nomeAutor,
-        string editora, string genero, decimal? precoInicial, decimal? precoFinal, int? estoqueInicial, int? estoqueFinal)
+    public IActionResult ResultadoFiltrarLivro(int? id, string? titulo, int? anoInicial, int? anoFinal, string? nomeAutor,
+        string? editora, string? genero, decimal? precoInicial, decimal? precoFinal, int? estoqueInicial, int? estoqueFinal)
     {
         List<Livro> listaLivros = new List<Livro>();
 

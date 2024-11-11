@@ -5,8 +5,24 @@
       "PackagePath": "staticwebassets\\TrabalhoAspNet.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\isamm\\Documents\\Rider\\TrabalhoAspNet\\wwwroot\\css\\2.png",
+      "PackagePath": "staticwebassets\\css\\2.png"
+    },
+    {
+      "Id": "C:\\Users\\isamm\\Documents\\Rider\\TrabalhoAspNet\\wwwroot\\css\\3.png",
+      "PackagePath": "staticwebassets\\css\\3.png"
+    },
+    {
+      "Id": "C:\\Users\\isamm\\Documents\\Rider\\TrabalhoAspNet\\wwwroot\\css\\4.png",
+      "PackagePath": "staticwebassets\\css\\4.png"
+    },
+    {
       "Id": "C:\\Users\\isamm\\Documents\\Rider\\TrabalhoAspNet\\wwwroot\\css\\background3.jpg",
       "PackagePath": "staticwebassets\\css\\background3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\isamm\\Documents\\Rider\\TrabalhoAspNet\\wwwroot\\css\\card1.png",
+      "PackagePath": "staticwebassets\\css\\card1.png"
     },
     {
       "Id": "C:\\Users\\isamm\\Documents\\Rider\\TrabalhoAspNet\\wwwroot\\css\\site.css",

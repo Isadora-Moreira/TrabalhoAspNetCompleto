@@ -1,5 +1,57 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
+
+<body class="home-body">
+<div class="card">
+    <img src="css/3.png"/>
+    <div class="content">
+        <div class="social">
+            <div class="item">
+                <div class="title"><a asp-controller="Livros" asp-action="Index">
+                    <button class="title-button">Livros</button>
+                </a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <img src="css/4.png"/>
+    <div class="content">
+        <div class="social">
+            <div class="item">
+                <div class="title"><a asp-controller="Autores" asp-action="Index">
+                    <button class="title-button">Autores</button>
+                </a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <img src="css/2.png"/>
+    <div class="content">
+        <div class="social">
+            <div class="item">
+                <div class="title"><a asp-controller="Generos" asp-action="Index">
+                    <button class="title-button">Gêneros</button>
+                </a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <img src="css/card1.png"/>
+    <div class="content">
+        <div class="social">
+            <div class="item">
+                <div class="title"><a asp-controller="Editoras" asp-action="Index">
+                    <button class="title-button">Editoras</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 

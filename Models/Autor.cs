@@ -16,7 +16,7 @@ namespace TrabalhoASPNet.Models
         [StringLength(50, ErrorMessage = "Tamanho máximo de 50 caracteres")]
         public string Nome { get; set; }
 
-        [Display(Name = "Data de nascimento")] 
+        [Display(Name = "Nascimento")] 
         [Required(ErrorMessage = "Campo obrigatório")]
         [DataType(DataType.Date)]
         public DateOnly Nascimento { get; set; }

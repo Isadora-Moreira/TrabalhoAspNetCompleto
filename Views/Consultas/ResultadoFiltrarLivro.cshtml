@@ -14,25 +14,25 @@ Layout = "~/Views/Shared/_Layout.cshtml";
         <thead>
         <tr>
             <th class="th1">
-                @Html.DisplayNameFor(model => model.First().Titulo)
+                @Html.DisplayNameFor(model => model.Titulo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().AnoPublicacao)
+                @Html.DisplayNameFor(model => model.AnoPublicacao)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().Autor.Nome) <!-- Mostra o nome do autor -->
+                @Html.DisplayNameFor(model => model.Autor.Nome) <!-- Mostra o nome do autor -->
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().Editora.Nome) <!-- Mostra o nome da editora -->
+                @Html.DisplayNameFor(model => model.Editora.Nome) <!-- Mostra o nome da editora -->
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().Genero.Descricao) <!-- Mostra a descrição do gênero -->
+                @Html.DisplayNameFor(model => model.Genero.Descricao) <!-- Mostra a descrição do gênero -->
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().Preco)
+                @Html.DisplayNameFor(model => model.Preco)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().QuantidadeEmEstoque)
+                @Html.DisplayNameFor(model => model.QuantidadeEmEstoque)
             </th>
             <th></th>
         </tr>
