@@ -1,0 +1,36 @@
+﻿@model IEnumerable<TrabalhoAspNet.Models.ConsultasModels.AgruparLivroAnoEditora>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="table-title-group">Livros por Ano e Editora</h2>
+
+<div class="table-container-group">
+    <table>
+        <thead>
+        <tr>
+            <th>Ano</th>
+            <th>Editora</th>
+            <th>Quantidade</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Ano</td>
+                <td>@item.Editora</td>
+                <td>@item.Quantidade</td>
+            </tr>
+        }
+        <tr>
+            <td colspan="1"><strong>Total</strong></td>
+            <td></td>
+            <td><strong>@Model.Sum(item => item.Quantidade)</strong></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+

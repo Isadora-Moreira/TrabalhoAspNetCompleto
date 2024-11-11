@@ -1,0 +1,44 @@
+﻿@model List<TrabalhoAspNet.Models.ConsultasModels.LivroAnoEditoraPivotViewModel.LivroAnoEditoraPivot>
+@{
+    var anos = ViewBag.Anos as List<int>;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="table-title-group-pivot">Livros por Editora e Ano</h2>
+
+<div class="table-container-group-pivot">
+    <table>
+        <thead>
+        <tr>
+            <th>Editora</th>
+            @foreach (var ano in anos)
+            {
+            <th>@ano</th>
+            }
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Editora</td>
+            @foreach (var ano in anos)
+            {
+            <td>@(item.QuantidadesPorAno.ContainsKey(ano) ? item.QuantidadesPorAno[ano] : 0)</td>
+            }
+        </tr>
+        }
+        <tr>
+            <td><strong>Total</strong></td>
+            @foreach (var ano in anos)
+            {
+            <td>
+                <strong>
+                    @Model.Sum(item => item.QuantidadesPorAno.ContainsKey(ano) ? item.QuantidadesPorAno[ano] : 0)
+                </strong>
+            </td>
+            }
+        </tr>
+        </tbody>
+    </table>
+</div>

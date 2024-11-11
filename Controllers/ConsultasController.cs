@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TrabalhoASPNet.Models;
+using TrabalhoAspNet.Models.ConsultasModels;
 
 namespace TrabalhoAspNet.Controllers;
 
@@ -66,18 +68,13 @@ public class ConsultasController : Controller
         return View();
     }
 
-    public IActionResult ResultadoFiltrarLivro(int? id, string? titulo, int? anoInicial, int? anoFinal, string? nomeAutor,
+    [SuppressMessage("ReSharper.DPA", "DPA0000: DPA issues")]
+    public IActionResult ResultadoFiltrarLivro(int? id, string? titulo, int? anoInicial, int? anoFinal, string? autor,
         string? editora, string? genero, decimal? precoInicial, decimal? precoFinal, int? estoqueInicial, int? estoqueFinal)
     {
         List<Livro> listaLivros = new List<Livro>();
 
-        if (id.HasValue)
-        {
-            listaLivros = contexto.Livros
-                .Where(l => l.Id == id)
-                .ToList();
-        }
-        else if (!string.IsNullOrEmpty(titulo))
+        if (!string.IsNullOrEmpty(titulo))
         {
             listaLivros = contexto.Livros
             .Where(l => l.Titulo.Contains(titulo))
@@ -91,11 +88,11 @@ public class ConsultasController : Controller
                 .OrderBy(l => l.AnoPublicacao)
                 .ToList();
         }
-        else if (!string.IsNullOrEmpty(nomeAutor))
+        else if (!string.IsNullOrEmpty(autor))
         {
             listaLivros = contexto.Livros
                 .Include(l => l.Autor)
-                .Where(l => l.Autor.Nome.Contains(nomeAutor))
+                .Where(l => l.Autor.Nome.Contains(autor))
                 .OrderBy(l => l.Autor.Nome)
                 .ToList();
         }
@@ -137,4 +134,60 @@ public class ConsultasController : Controller
         }
         return View(listaLivros);
     }
+
+    [SuppressMessage("ReSharper.DPA", "DPA0000: DPA issues")]
+    public IActionResult AgruparLivroAnoEditora()
+    {
+        IEnumerable<AgruparLivroAnoEditora> listaAgruparLivroAnoEditora =
+            from livro in contexto.Livros
+                .Include(l => l.Editora)
+                .ToList()
+            let ano = livro.AnoPublicacao
+            let autor = livro.Editora.Nome
+            group livro by new { ano, autor }
+            into grupoAnoAutor
+            orderby grupoAnoAutor.Key.ano, grupoAnoAutor.Key.autor
+            select new AgruparLivroAnoEditora
+            {
+                Ano = grupoAnoAutor.Key.ano,
+                Editora = grupoAnoAutor.Key.autor,
+                Quantidade = grupoAnoAutor.Count()
+            };
+        return View(listaAgruparLivroAnoEditora);
+    }
+    
+    public IActionResult AgruparLivroAnoEditoraPivot()
+    {
+        var dadosAgrupados = contexto.Livros
+            .Include(l => l.Editora)
+            .GroupBy(l => new { l.AnoPublicacao, l.Editora.Nome })
+            .Select(g => new
+            {
+                Ano = g.Key.AnoPublicacao,
+                Editora = g.Key.Nome,
+                Quantidade = g.Count()
+            })
+            .OrderBy(x => x.Editora)
+            .ThenBy(x => x.Ano)
+            .ToList();
+
+        // Obtenha todos os anos distintos
+        var anos = dadosAgrupados.Select(x => x.Ano).Distinct().OrderBy(x => x).ToList();
+
+        // Construa a lista de ViewModels
+        var pivotData = dadosAgrupados
+            .GroupBy(x => x.Editora)
+            .Select(g => new LivroAnoEditoraPivotViewModel.LivroAnoEditoraPivot
+            {
+                Editora = g.Key,
+                QuantidadesPorAno = anos.ToDictionary(
+                    ano => ano,
+                    ano => g.Where(x => x.Ano == ano).Select(x => x.Quantidade).FirstOrDefault())
+            })
+            .ToList();
+
+        ViewBag.Anos = anos; // Passa os anos para a View para exibição como cabeçalhos
+        return View(pivotData);
+    }
+
 }
