@@ -11,6 +11,7 @@ builder.Services.AddDbContext<Contexto>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("conexao")));
 
 builder.Services.AddDefaultIdentity<IdentityUser>()
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<Contexto>();
 
 // Adicionando suporte a controladores com views
@@ -62,8 +63,8 @@ var localizationOptions = new RequestLocalizationOptions
 app.UseRequestLocalization(localizationOptions);
 
 // Autorização
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 
 // Definir o padrão de rotas para os controladores
 app.MapControllerRoute(
